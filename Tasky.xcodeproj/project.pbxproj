@@ -14,6 +14,7 @@
 		20203C12262CF0F900AE9B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20203C11262CF0F900AE9B11 /* Assets.xcassets */; };
 		20203C15262CF0F900AE9B11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20203C13262CF0F900AE9B11 /* LaunchScreen.storyboard */; };
 		20568C032639ED1600665023 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20568C022639ED1600665023 /* ChecklistItem.swift */; };
+		209986AE263CB1DB0054C610 /* AddItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209986AD263CB1DB0054C610 /* AddItemTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		20203C14262CF0F900AE9B11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20203C16262CF0F900AE9B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20568C022639ED1600665023 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		209986AD263CB1DB0054C610 /* AddItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				20203C0C262CF0F700AE9B11 /* ChecklistViewController.swift */,
 				20568C022639ED1600665023 /* ChecklistItem.swift */,
 				20203C0E262CF0F700AE9B11 /* Main.storyboard */,
+				209986AD263CB1DB0054C610 /* AddItemTableViewController.swift */,
 				20203C11262CF0F900AE9B11 /* Assets.xcassets */,
 				20203C13262CF0F900AE9B11 /* LaunchScreen.storyboard */,
 				20203C16262CF0F900AE9B11 /* Info.plist */,
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20203C0D262CF0F700AE9B11 /* ChecklistViewController.swift in Sources */,
+				209986AE263CB1DB0054C610 /* AddItemTableViewController.swift in Sources */,
 				20203C09262CF0F700AE9B11 /* AppDelegate.swift in Sources */,
 				20203C0B262CF0F700AE9B11 /* SceneDelegate.swift in Sources */,
 				20568C032639ED1600665023 /* ChecklistItem.swift in Sources */,
