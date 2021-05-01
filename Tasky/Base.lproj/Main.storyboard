@@ -7,36 +7,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklists-->
+        <!--Task Lists-->
         <scene sceneID="fE6-vE-VdB">
             <objects>
-                <tableViewController id="zfz-dL-Ogu" customClass="ChecklistViewController" customModule="Tasky" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zfz-dL-Ogu" customClass="TaskListViewController" customModule="Tasky" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DnZ-od-G8x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="ChecklistItem" id="r4z-ZS-YBL">
-                                <rect key="frame" x="0.0" y="28" width="375" height="22.333333969116211"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="TaskListItem" id="r4z-ZS-YBL">
+                                <rect key="frame" x="0.0" y="28" width="375" height="27.333333969116211"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r4z-ZS-YBL" id="xbd-Xh-IrC">
-                                    <rect key="frame" x="0.0" y="0.0" width="335" height="22.333333969116211"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="315.66666666666669" height="27.333333969116211"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IM0-Io-C58">
-                                            <rect key="frame" x="16" y="11" width="311" height="0.33333333333333393"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKQ-xy-IEG">
+                                            <rect key="frame" x="53" y="0.0" width="215" height="27.333333333333332"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="215" id="MGN-PO-moV"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔︎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7C9-bd-z1m">
+                                            <rect key="frame" x="16" y="0.0" width="22" height="27.333333333333332"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="c0z-AO-bk9"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="IM0-Io-C58" firstAttribute="top" secondItem="xbd-Xh-IrC" secondAttribute="topMargin" id="0ry-Nl-tYn"/>
-                                        <constraint firstItem="IM0-Io-C58" firstAttribute="leading" secondItem="xbd-Xh-IrC" secondAttribute="leadingMargin" id="2YZ-jT-tkI"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="IM0-Io-C58" secondAttribute="trailing" id="81d-pZ-E3i"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="IM0-Io-C58" secondAttribute="bottom" id="UMh-0f-PmR"/>
+                                        <constraint firstAttribute="bottom" secondItem="zKQ-xy-IEG" secondAttribute="bottom" id="3Fl-cn-jl2"/>
+                                        <constraint firstItem="7C9-bd-z1m" firstAttribute="leading" secondItem="xbd-Xh-IrC" secondAttribute="leadingMargin" id="SbW-45-zQJ"/>
+                                        <constraint firstItem="7C9-bd-z1m" firstAttribute="top" secondItem="xbd-Xh-IrC" secondAttribute="top" id="ZRl-ej-J9b"/>
+                                        <constraint firstAttribute="bottom" secondItem="7C9-bd-z1m" secondAttribute="bottom" id="bVP-JK-x8b"/>
+                                        <constraint firstItem="zKQ-xy-IEG" firstAttribute="top" secondItem="xbd-Xh-IrC" secondAttribute="top" id="bXw-S5-89c"/>
+                                        <constraint firstItem="zKQ-xy-IEG" firstAttribute="leading" secondItem="7C9-bd-z1m" secondAttribute="trailing" constant="15" id="nZ1-RJ-Xcu"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="WTt-me-DeJ" kind="show" identifier="EditTaskListItem" trigger="accessoryAction" id="BKH-Ff-9fj"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -44,22 +61,22 @@
                             <outlet property="delegate" destination="zfz-dL-Ogu" id="xeh-6X-1Rc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Checklists" id="hnq-HD-7Tl">
+                    <navigationItem key="navigationItem" title="Task Lists" id="hnq-HD-7Tl">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="dBr-j1-RDh">
                             <connections>
-                                <segue destination="WTt-me-DeJ" kind="show" identifier="AddChecklistItem" id="Nmu-aA-nyW"/>
+                                <segue destination="WTt-me-DeJ" kind="show" identifier="AddTasklistItem" id="Nmu-aA-nyW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5sg-eo-81v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="23"/>
+            <point key="canvasLocation" x="760.79999999999995" y="22.906403940886701"/>
         </scene>
-        <!--Add Item-->
+        <!--New Task List-->
         <scene sceneID="qbI-9Z-pu0">
             <objects>
-                <tableViewController id="WTt-me-DeJ" customClass="AddItemTableViewController" customModule="Tasky" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="WTt-me-DeJ" customClass="AddTaskListItemViewController" customModule="Tasky" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="0rA-C0-5Ev">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,7 +91,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QRY-Rv-8AS">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the task" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QRY-Rv-8AS">
                                                     <rect key="frame" x="16" y="11" width="343" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -100,7 +117,7 @@
                             <outlet property="delegate" destination="WTt-me-DeJ" id="PsL-kR-zzb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Item" id="wtc-el-xLJ">
+                    <navigationItem key="navigationItem" title="New Task List" id="wtc-el-xLJ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="deU-C6-IfK">
                             <connections>
                                 <action selector="cancel" destination="WTt-me-DeJ" id="fPr-1i-BY6"/>
@@ -140,6 +157,9 @@
             <point key="canvasLocation" x="-188" y="22.906403940886701"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="BKH-Ff-9fj"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
