@@ -7,14 +7,18 @@
 
 import UIKit
 
-protocol AddItemViewControllerDelegate: class {
-    func addItemViewControllerDidCancel(_ controller: AddItemTableViewController)
+protocol AddTaskListItemViewControllerDelegate: class {
+    func AddTaskListItemViewControllerDidCancel(_ controller: AddTaskListItemViewController)
     
-    func addItemViewController(_ controller: AddItemTableViewController, didFinishAdding item: ChecklistItem)
+    func AddTaskListItemViewController(_ controller: AddTaskListItemViewController, didFinishAdding item: TaskListItem)
+    
+    func AddTaskListItemViewController(_controller: AddTaskListItemViewController, didFinishEditing item: TaskListItem)
 }
 
-class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
-    weak var delegate: AddItemViewControllerDelegate?
+class AddTaskListItemViewController: UITableViewController, UITextFieldDelegate {
+    weak var delegate: TaskListViewController?
+    
+    var itemToEdit: TaskListItem?
 
     @IBOutlet weak var addItemTextfield: UITextField!
     
@@ -22,6 +26,12 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let itemToEdit = itemToEdit {
+            title = "Edit Task List"
+            addItemTextfield.text = itemToEdit.text
+            doneButton.isEnabled = true
+        }
         
         navigationItem.largeTitleDisplayMode = .never
 
@@ -58,13 +68,21 @@ class AddItemTableViewController: UITableViewController, UITextFieldDelegate {
 
 //    MARK:- Actions
     @IBAction func done() {
-        let newItem = ChecklistItem()
-        newItem.text = addItemTextfield.text!
-        
-        delegate?.addItemViewController(self, didFinishAdding: newItem)
+        if let itemToEdit = itemToEdit {
+            itemToEdit.text = addItemTextfield.text!
+            delegate?.AddTaskListItemViewController(_controller: self, didFinishEditing: itemToEdit)
+            
+        } else {
+            let newItem = TaskListItem()
+            newItem.text = addItemTextfield.text!
+            
+            delegate?.AddTaskListItemViewController(self, didFinishAdding: newItem)
+        }
+       
     }
     
     @IBAction func cancel() {
-        delegate?.addItemViewControllerDidCancel(self)
+        delegate?.AddTaskListItemViewControllerDidCancel(self)
+        
     }
 }
