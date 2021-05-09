@@ -8,34 +8,13 @@
 import UIKit
 
 class TaskListViewController: UITableViewController, AddTaskListItemViewControllerDelegate {
-    var items = [TaskListItem]()
+    var items:[TaskListItem] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         navigationController?.navigationBar.prefersLargeTitles = true
 
-            let item1 = TaskListItem()
-            item1.text = "Walk the dog"
-            items.append(item1)
-            
-            let item2 = TaskListItem()
-            item2.text = "Brush my teeth"
-            item2.checked = true
-            items.append(item2)
-            
-            let item3 = TaskListItem()
-            item3.text = "Learn iOS development"
-            item3.checked = true
-            items.append(item3)
-            
-            let item4 = TaskListItem()
-            item4.text = "Soccer practice"
-            items.append(item4)
-            
-            let item5 = TaskListItem()
-            item5.text = "Eat ice cream"
-            items.append(item5)
+        loadTaskLists()
     }
     
 //    MARK:- Helper methods
@@ -81,6 +60,7 @@ class TaskListViewController: UITableViewController, AddTaskListItemViewControll
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         items.remove(at: indexPath.row)
+        saveTaskLists()
         
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
@@ -92,6 +72,8 @@ class TaskListViewController: UITableViewController, AddTaskListItemViewControll
             let item = items[indexPath.row]
             item.toggleChecked()
             configureCheckmark(for: cell, with: item)
+            
+            saveTaskLists()
         }
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -105,13 +87,15 @@ class TaskListViewController: UITableViewController, AddTaskListItemViewControll
     
     func AddTaskListItemViewController(_ controller: AddTaskListItemViewController, didFinishAdding item: TaskListItem) {
         addNewTaskItem(item: item)
+        saveTaskLists()
         
         navigationController?.popViewController(animated: true)
     }
     
     func AddTaskListItemViewController(_controller: AddTaskListItemViewController, didFinishEditing item: TaskListItem) {
         if let index = items.firstIndex(of: item) {
-//            items[index] = item
+            items[index] = item
+            saveTaskLists()
             let indexPath = IndexPath(row: index, section: 0)
             if let cell = tableView.cellForRow(at: indexPath) {
                 configureText(for: cell, with: item)
@@ -135,7 +119,43 @@ class TaskListViewController: UITableViewController, AddTaskListItemViewControll
             }
         }
     }
-
+    
+//    MARK:- Data persistance
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Taskslist.plist")
+    }
+    
+    func saveTaskLists() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(items)
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+        } catch {
+            print("Error decoding items array \(error.localizedDescription)")
+        }
+    }
+    
+    func loadTaskLists() {
+        let path = dataFilePath()
+        
+        if let data = try? Data(contentsOf: path) {
+            let decoder = PropertyListDecoder()
+            
+            do {
+                items = try decoder.decode([TaskListItem].self, from: data)
+            } catch {
+                print("Error decoding tasklist array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
 
 }
 
